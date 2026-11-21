@@ -1,0 +1,20 @@
+# Direktori upload user (jangan ikut ke git, hanya .gitkeep-nya)
+uploads/reports/*
+uploads/articles/*
+uploads/profiles/*
+!uploads/reports/.gitkeep
+!uploads/articles/.gitkeep
+!uploads/profiles/.gitkeep
+
+# Script test/scratch sementara
+scratch/
+
+# File sistem OS
+.DS_Store
+Thumbs.db
+
+# File IDE
+.idea/
+.vscode/
+*.swp
+*.swo
