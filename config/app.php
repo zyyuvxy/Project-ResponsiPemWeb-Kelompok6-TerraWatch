@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application Configuration
  * TerraWatch Environmental Reporting Platform
@@ -11,7 +12,18 @@ define('APP_VERSION', '1.0.0');
 
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-define('APP_URL', $protocol . $host . '/TeraWatch');
+
+// Zona waktu aplikasi (agar jam sama dengan database)
+date_default_timezone_set('Asia/Jakarta');
+
+// APP_URL dihitung otomatis dari lokasi folder proyek, jadi tidak
+// bergantung pada nama folder atau port server.
+$docRoot  = rtrim(str_replace('\\', '/', realpath($_SERVER['DOCUMENT_ROOT'] ?? '') ?: ''), '/');
+$appRoot  = str_replace('\\', '/', realpath(__DIR__ . '/..'));
+$basePath = ($docRoot !== '' && stripos($appRoot, $docRoot) === 0)
+    ? substr($appRoot, strlen($docRoot))
+    : '';
+define('APP_URL', $protocol . $host . $basePath);
 
 // File Upload Constraints
 define('UPLOAD_DIR', __DIR__ . '/../uploads/');
