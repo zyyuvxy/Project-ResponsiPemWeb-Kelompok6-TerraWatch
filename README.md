@@ -184,30 +184,43 @@ TeraWatch/
 - Ekstensi PHP wajib aktif: `pdo_mysql`, `fileinfo`.
 
 ### 2. Pengaturan `php.ini`
-Buka berkas `php.ini` (melalui XAMPP Control Panel > Tombol Config di Apache > `php.ini`), kemudian pastikan direktif berikut disesuaikan untuk mendukung upload bukti foto:
+Buka berkas `php.ini` (melalui XAMPP Control Panel > Tombol Config di Apache > `php.ini`), kemudian pastikan direktif berikut disesuaikan:
 ```ini
-upload_max_filesize = 8M
+upload_max_filesize = 3M
 post_max_size = 16M
 memory_limit = 128M
 max_file_uploads = 20
+date.timezone = Asia/Jakarta
 ```
-*Simpan berkas `php.ini`, lalu lakukan **Restart Apache** di XAMPP Control Panel.*
+*Simpan berkas `php.ini`, lalu lakukan **Restart Apache** di XAMPP Control Panel agar semua perubahan aktif.*
 
 ### 3. Pemasangan Database
 1. Buka browser dan akses **phpMyAdmin** (`http://localhost/phpmyadmin/` atau port XAMPP Anda).
 2. Buat database baru bernama: `terrawatch_db`.
 3. Buka tab **Import**, pilih berkas:
    ```
-   c:\xampp\htdocs\TeraWatch\database\terrawatch_db.sql
+   database/terrawatch_db.sql
    ```
-4. Klik tombol **Import / Kirim**. Skema tabel, foreign key, dan data awal akan tercipta secara otomatis tanpa kendala.
+4. Klik tombol **Import / Kirim**. Skema tabel, foreign key, dan data awal (termasuk foto contoh laporan) akan tercipta secara otomatis tanpa kendala.
 
 ### 4. Menjalankan Aplikasi
 Akses aplikasi melalui peramban web pada tautan:
 ```
 http://localhost/TeraWatch/
 ```
-*(Sesuaikan nomor port jika Apache Anda menggunakan port kustom, misalnya `http://localhost:8080/TeraWatch/`)*.
+*(Sesuaikan nomor port jika Apache Anda menggunakan port kustom, misalnya `http://localhost:8080/TeraWatch/`)*
+
+### 5. Akses dari Jaringan Lokal (Demo Bersama)
+Data dan foto laporan tersimpan di komputer yang menjalankan server XAMPP. Untuk demo bersama:
+- **Satu laptop** menjalankan XAMPP (Apache + MySQL aktif).
+- **Laptop/HP lain** di jaringan Wi-Fi yang sama cukup membuka browser dan mengetik:
+  ```
+  http://<IP-laptop-server>/TeraWatch/
+  ```
+  Contoh: `http://192.168.1.5/TeraWatch/`
+- Cek IP laptop server melalui Command Prompt: `ipconfig` → lihat nilai **IPv4 Address**.
+- Pastikan firewall Windows mengizinkan koneksi masuk pada port 80 (Apache).
+- **Alternatif:** Gunakan hosting web (Niagahoster, InfinityFree, dll.) agar bisa diakses dari mana saja tanpa XAMPP lokal.
 
 ---
 

@@ -104,7 +104,7 @@ $stmtImages->execute([$reportId]);
 $images = $stmtImages->fetchAll(PDO::FETCH_ASSOC);
 
 // Fetch status history (urutan kronologis dari awal ke akhir)
-$stmtHistory = $pdo->prepare("SELECT ru.*, u.name as changer_name, u.role as changer_role FROM report_updates ru LEFT JOIN users u ON ru.changed_by = u.user_id WHERE ru.report_id = ? ORDER BY ru.created_at ASC");
+$stmtHistory = $pdo->prepare("SELECT ru.*, u.name as changer_name, u.role as changer_role FROM report_updates ru LEFT JOIN users u ON ru.changed_by = u.user_id WHERE ru.report_id = ? ORDER BY ru.created_at ASC, ru.update_id ASC");
 $stmtHistory->execute([$reportId]);
 $history = $stmtHistory->fetchAll(PDO::FETCH_ASSOC);
 

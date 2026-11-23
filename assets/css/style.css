@@ -678,6 +678,74 @@ a {
 }
 .status-badge.revision .dot { background: #C17B58; }
 
+/* Custom Status Badge Pills */
+.badge-pending,
+.badge-revision,
+.badge-verified,
+.badge-progress,
+.badge-completed,
+.badge-rejected,
+.badge-draft,
+.badge-published {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 50rem;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+.badge-pending {
+    background-color: rgba(193, 123, 88, 0.15) !important;
+    color: #9c3f25 !important;
+    border: 1px solid rgba(193, 123, 88, 0.35);
+}
+
+.badge-revision {
+    background-color: rgba(214, 203, 181, 0.45) !important;
+    color: #6d542b !important;
+    border: 1px solid rgba(214, 203, 181, 0.8);
+}
+
+.badge-verified {
+    background-color: rgba(120, 144, 120, 0.2) !important;
+    color: #2b573a !important;
+    border: 1px solid rgba(120, 144, 120, 0.45);
+}
+
+.badge-progress {
+    background-color: rgba(181, 194, 170, 0.35) !important;
+    color: #2e5538 !important;
+    border: 1px solid rgba(181, 194, 170, 0.7);
+}
+
+.badge-completed {
+    background-color: #34483B !important;
+    color: #ffffff !important;
+    border: 1px solid #233128;
+}
+
+.badge-rejected {
+    background-color: #fce8e6 !important;
+    color: #a82315 !important;
+    border: 1px solid #f5c2bc;
+}
+
+.badge-draft {
+    background-color: #e9ecef !important;
+    color: #495057 !important;
+    border: 1px solid #ced4da;
+}
+
+.badge-published {
+    background-color: #d1e7dd !important;
+    color: #0f5132 !important;
+    border: 1px solid #badbcc;
+}
+
 /* Kebab Menu */
 .kebab-menu {
     background: none;
@@ -1535,6 +1603,26 @@ a {
 }
 
 @media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1060;
+    }
+    .sidebar.show {
+        transform: translateX(0);
+        box-shadow: 4px 0 25px rgba(0,0,0,0.35);
+    }
+    .topbar {
+        margin-left: 0 !important;
+        left: 0;
+    }
+    .main-content {
+        margin-left: 0 !important;
+    }
     .stat-cards {
         grid-template-columns: repeat(2, 1fr);
     }

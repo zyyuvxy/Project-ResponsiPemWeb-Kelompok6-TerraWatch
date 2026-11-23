@@ -66,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar - TerraWatch</title>
+    <link rel="icon" href="../assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -171,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .input-group-custom {
             position: relative;
         }
-        .input-group-custom i.field-icon {
+        .input-group-custom > i.field-icon {
             position: absolute;
             left: 14px;
             top: 50%;
@@ -188,6 +189,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-size: 14px;
             transition: all 0.3s ease;
             background: #F6F6F0;
+        }
+        .input-group-custom input[type="password"] {
+            padding-right: 44px;
         }
         .input-group-custom input:focus {
             outline: none;
@@ -250,8 +254,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="register-card">
         <div class="logo-section">
             <div class="logo-brand">
-                <span class="logo-leaf">🌿</span>
-                <span class="logo-name">TerraWatch</span>
+                <img src="../assets/img/terrawatch-logo.png" alt="TerraWatch" style="height: 60px; object-fit: contain;">
             </div>
             <div class="tagline">Observe, Report, Protect</div>
             <div class="sdg-badge mt-2">

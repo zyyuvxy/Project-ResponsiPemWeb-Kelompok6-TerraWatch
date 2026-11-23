@@ -38,6 +38,7 @@ $pageTitle = 'Artikel Edukasi Lingkungan';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?> - TerraWatch</title>
+    <link rel="icon" href="../assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
@@ -89,7 +90,8 @@ $pageTitle = 'Artikel Edukasi Lingkungan';
     <nav class="navbar navbar-dark bg-pine py-3 shadow-sm" style="background:#34483B;">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.php">
-                <span class="fs-4 me-2">🌿</span>TerraWatch Edukasi
+                <img src="../assets/img/terrawatch-logo-light.png" alt="TerraWatch" style="height: 36px; object-fit: contain;">
+                <span class="ms-2">Edukasi</span>
             </a>
             <a href="../auth/login.php" class="btn btn-outline-light btn-sm">Masuk Portal</a>
         </div>

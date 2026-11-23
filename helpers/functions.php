@@ -47,6 +47,29 @@ function requireUser(): void
     if (isAdmin()) {
         redirect('../admin/dashboard.php');
     }
+
+    try {
+        $pdo = getConnection();
+        $stmt = $pdo->prepare("SELECT is_active FROM users WHERE user_id = :id");
+        $stmt->execute(['id' => $_SESSION['user_id']]);
+        $active = $stmt->fetchColumn();
+        if ($active !== false && (int)$active === 0) {
+            $_SESSION = [];
+            if (ini_get("session.use_cookies")) {
+                $params = session_get_cookie_params();
+                setcookie(session_name(), '', time() - 42000,
+                    $params["path"], $params["domain"],
+                    $params["secure"], $params["httponly"]
+                );
+            }
+            if (session_status() === PHP_SESSION_ACTIVE) {
+                session_destroy();
+            }
+            redirect('../auth/login.php?error=inactive');
+        }
+    } catch (Exception $e) {
+        // Abaikan error jika koneksi bermasalah saat cek
+    }
 }
 
 /**
@@ -96,9 +119,21 @@ function formatDateTime(string $date): string
 /**
  * Generate a report ID like TW-2024-001
  */
-function generateReportId($id = null): string
+function generateReportId($id = null, ?string $createdAt = null): string
 {
+    if (is_array($id)) {
+        $createdAt = $id['created_at'] ?? $createdAt;
+        $id = $id['report_id'] ?? ($id['id'] ?? null);
+    }
+
     $year = date('Y');
+    if (!empty($createdAt)) {
+        $timestamp = strtotime($createdAt);
+        if ($timestamp !== false) {
+            $year = date('Y', $timestamp);
+        }
+    }
+
     if ($id !== null && is_numeric($id) && (int)$id > 0) {
         return sprintf('TW-%s-%03d', $year, (int)$id);
     }
@@ -140,17 +175,17 @@ function getImageUrl(?string $path): string
 function getStatusBadgeClass(string $status): string
 {
     $map = [
-        'Pending'     => 'badge-warning',
-        'Revision'    => 'badge-info',
-        'Verified'    => 'badge-primary',
-        'In Progress' => 'badge-info',
-        'Completed'   => 'badge-success',
-        'Rejected'    => 'badge-danger',
-        'Draft'       => 'badge-secondary',
-        'Published'   => 'badge-success',
+        'Pending'     => 'badge-pending',
+        'Revision'    => 'badge-revision',
+        'Verified'    => 'badge-verified',
+        'In Progress' => 'badge-progress',
+        'Completed'   => 'badge-completed',
+        'Rejected'    => 'badge-rejected',
+        'Draft'       => 'badge-draft',
+        'Published'   => 'badge-published',
     ];
 
-    return $map[$status] ?? 'badge-secondary';
+    return $map[$status] ?? 'badge-pending';
 }
 
 /**
@@ -179,7 +214,11 @@ function timeAgo(string $datetime): string
 {
     $now  = new DateTime();
     $ago  = new DateTime($datetime);
-    $diff = $now->diff($ago);
+    $diff = $ago->diff($now);
+
+    if ($diff->invert === 1) {
+        return 'baru saja';
+    }
 
     if ($diff->y > 0) {
         return $diff->y . ' tahun yang lalu';
@@ -201,7 +240,7 @@ function timeAgo(string $datetime): string
         return $diff->i . ' menit yang lalu';
     }
 
-    return 'Baru saja';
+    return 'baru saja';
 }
 
 /**

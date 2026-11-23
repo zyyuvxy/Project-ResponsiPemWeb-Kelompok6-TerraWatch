@@ -96,6 +96,7 @@ $pageTitle = 'Dashboard';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?> - TerraWatch</title>
+    <link rel="icon" href="../assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
@@ -124,6 +125,15 @@ $pageTitle = 'Dashboard';
             border: 1px solid #D6CBB5 !important;
             width: 100% !important;
         }
+    }
+    .report-table th:first-child,
+    .report-table td:first-child,
+    .report-id {
+        white-space: nowrap !important;
+    }
+    .report-table th,
+    .report-table td {
+        padding: 10px 12px !important;
     }
     </style>
 </head>
@@ -245,7 +255,7 @@ $pageTitle = 'Dashboard';
                     </tr>
                     <?php else: ?>
                     <?php foreach ($recentReports as $report):
-                        $reportId = generateReportId($report['report_id'] ?? 0);
+                        $reportId = generateReportId($report['report_id'] ?? 0, $report['created_at'] ?? null);
                         $categoryClass = getCategoryBadgeClass($report['category_name'] ?? '');
                         $statusClass = getStatusBadgeClass($report['status']);
                         $statusLower = strtolower(str_replace(' ', '-', $report['status']));
@@ -365,8 +375,7 @@ $pageTitle = 'Dashboard';
         <!-- G. Conservation Tips -->
         <div class="tips-card">
             <div class="d-flex align-items-center gap-2 mb-2">
-                <span style="font-size: 1.6rem; line-height: 1;">🌿</span>
-                <span class="fw-bold text-pine" style="font-size: 1.15rem; letter-spacing: -0.3px;">TerraWatch</span>
+                <img src="../assets/img/terrawatch-logo.png" alt="TerraWatch" style="height: 28px; object-fit: contain;">
             </div>
             <div class="tc-label">TIPS KONSERVASI HARI INI</div>
             <h5>Identifikasi Bukti Perambahan Liar Berbasis Geotag</h5>

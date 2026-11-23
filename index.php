@@ -52,6 +52,7 @@ if (isset($pdo) && $pdo !== null) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TerraWatch - Observe, Report, Protect | SDGs 15 Life on Land</title>
+    <link rel="icon" href="assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
@@ -122,8 +123,7 @@ if (isset($pdo) && $pdo !== null) {
 <nav class="navbar navbar-expand-lg navbar-dark landing-nav shadow-sm">
     <div class="container">
         <a class="navbar-brand fw-bold d-flex align-items-center" href="index.php">
-            <span class="fs-4 me-2">🌿</span>
-            <span class="fs-4 tracking-tight">TerraWatch</span>
+            <img src="assets/img/terrawatch-logo-light.png" alt="TerraWatch" style="height: 36px; object-fit: contain;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
             <span class="navbar-toggler-icon"></span>
@@ -337,7 +337,7 @@ if (isset($pdo) && $pdo !== null) {
     <div class="container">
         <div class="row g-4 mb-4">
             <div class="col-lg-5">
-                <h5 class="fw-bold mb-2">🌿 TerraWatch</h5>
+                <div class="mb-3"><img src="assets/img/terrawatch-logo-light.png" alt="TerraWatch" style="height: 36px; object-fit: contain;"></div>
                 <p class="small text-white-50 mb-3" style="line-height:1.6;">
                     Platform Web Pelaporan &amp; Pemantauan Kerusakan Lingkungan Darat untuk mendukung ketercapaian Sustainable Development Goals (SDGs) Target 15 – Life on Land.
                 </p>
@@ -363,14 +363,7 @@ if (isset($pdo) && $pdo !== null) {
         </div>
         <hr style="border-color:rgba(255,255,255,0.15);">
         <div class="text-center small text-white-50">
-            <div class="mb-2">&copy; <?= date('Y') ?> TerraWatch Konservasi Alam Indonesia. Mendukung Aksi Nyata SDGs 15: Life on Land.</div>
-            <div class="d-flex justify-content-center align-items-center gap-3">
-                <a href="#" class="text-white-50 text-decoration-none">Kebijakan Privasi</a>
-                <span class="text-white-50">•</span>
-                <a href="#" class="text-white-50 text-decoration-none">Pedoman Spasial</a>
-                <span class="text-white-50">•</span>
-                <a href="#" class="text-white-50 text-decoration-none">Transparansi Data</a>
-            </div>
+            <div>&copy; <?= date('Y') ?> TerraWatch - Proyek Responsi Pemrograman Web I. Mendukung SDG 15: Life on Land.</div>
         </div>
     </div>
 </footer>

@@ -9,8 +9,7 @@ if (isset($pdo) && isset($_SESSION['user_id'])) {
     <!-- Logo Section -->
     <div class="sidebar-header">
         <div class="sidebar-logo">
-            <span class="logo-leaf">🌿</span>
-            <span class="logo-name">TerraWatch</span>
+            <img src="../assets/img/terrawatch-logo-light.png" alt="TerraWatch" style="height: 36px; max-width: 180px; object-fit: contain;">
         </div>
         <div class="sidebar-sdg-badge">
             <i class="fas fa-globe-americas"></i> SDG 15: Life on Land
@@ -74,10 +73,6 @@ if (isset($pdo) && isset($_SESSION['user_id'])) {
 
     <!-- Bottom Links -->
     <div class="sidebar-bottom">
-        <a href="#" class="sidebar-help-link">
-            <i class="fas fa-question-circle"></i>
-            <span>Bantuan</span>
-        </a>
         <a href="../auth/logout.php" class="sidebar-logout-link">
             <i class="fas fa-sign-out-alt"></i>
             <span>Keluar</span>

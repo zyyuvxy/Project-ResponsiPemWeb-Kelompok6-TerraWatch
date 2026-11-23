@@ -7,7 +7,7 @@ require_once __DIR__ . '/../helpers/functions.php';
 requireAdmin();
 
 // Filter & search params
-$search = isset($_GET['search']) ? sanitize($_GET['search']) : '';
+$search = sanitize($_GET['search'] ?? $_GET['q'] ?? '');
 $filterStatus = isset($_GET['status']) ? sanitize($_GET['status']) : '';
 $filterCategory = isset($_GET['category']) ? (int)$_GET['category'] : 0;
 $dateFrom = isset($_GET['date_from']) ? sanitize($_GET['date_from']) : '';
@@ -22,8 +22,9 @@ $where = [];
 $params = [];
 
 if ($search) {
-    $where[] = "(r.report_id LIKE ? OR r.title LIKE ? OR u.name LIKE ?)";
+    $where[] = "(r.report_id LIKE ? OR r.title LIKE ? OR r.location LIKE ? OR u.name LIKE ?)";
     $searchParam = "%$search%";
+    $params[] = $searchParam;
     $params[] = $searchParam;
     $params[] = $searchParam;
     $params[] = $searchParam;

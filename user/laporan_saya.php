@@ -10,7 +10,7 @@ $userId = $_SESSION['user_id'];
 $userName = $_SESSION['user_name'] ?? 'Pengguna';
 
 // Filters
-$search = isset($_GET['search']) ? sanitize($_GET['search']) : '';
+$search = sanitize($_GET['search'] ?? $_GET['q'] ?? '');
 $filterStatus = isset($_GET['status']) ? sanitize($_GET['status']) : '';
 $filterCategory = isset($_GET['category']) ? (int)$_GET['category'] : 0;
 $filterDateFrom = isset($_GET['date_from']) ? sanitize($_GET['date_from']) : '';
@@ -110,6 +110,7 @@ function sortLink($col, $label) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?> - TerraWatch</title>
+    <link rel="icon" href="../assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
@@ -182,7 +183,7 @@ function sortLink($col, $label) {
                 </tr>
                 <?php else: ?>
                 <?php foreach ($reports as $report):
-                    $reportId = generateReportId($report['report_id']);
+                    $reportId = generateReportId($report['report_id'], $report['created_at'] ?? null);
                     $categoryClass = getCategoryBadgeClassLS($report['category_name'] ?? '');
                     $statusLower = strtolower(str_replace(' ', '-', $report['status']));
                 ?>

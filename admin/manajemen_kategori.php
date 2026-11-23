@@ -46,18 +46,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($action === 'delete') {
         $id = (int)$_POST['category_id'];
 
-        // Check if has reports
-        $stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM reports WHERE category_id = ?");
-        $stmtCheck->execute([$id]);
-        $reportCount = $stmtCheck->fetchColumn();
+        try {
+            // Check if has reports
+            $stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM reports WHERE category_id = ?");
+            $stmtCheck->execute([$id]);
+            $reportCount = $stmtCheck->fetchColumn();
 
-        if ($reportCount > 0) {
-            $_SESSION['error'] = "Kategori tidak dapat dihapus karena masih memiliki $reportCount laporan terkait.";
-        } else {
-            $stmt = $pdo->prepare("DELETE FROM categories WHERE category_id = ?");
-            $stmt->execute([$id]);
-            logActivity($pdo, $_SESSION['user_id'], "Menghapus kategori ID #$id");
-            $_SESSION['success'] = 'Kategori berhasil dihapus.';
+            if ($reportCount > 0) {
+                $_SESSION['error'] = 'Kategori masih dipakai laporan';
+            } else {
+                $stmt = $pdo->prepare("DELETE FROM categories WHERE category_id = ?");
+                $stmt->execute([$id]);
+                logActivity($pdo, $_SESSION['user_id'], "Menghapus kategori ID #$id");
+                $_SESSION['success'] = 'Kategori berhasil dihapus.';
+            }
+        } catch (PDOException $e) {
+            $_SESSION['error'] = 'Kategori masih dipakai laporan';
         }
         redirect('manajemen_kategori.php');
     }

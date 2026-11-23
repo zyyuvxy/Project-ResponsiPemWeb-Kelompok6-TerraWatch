@@ -232,6 +232,7 @@ $pageTitle = 'Edit Laporan';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?> - TerraWatch</title>
+    <link rel="icon" href="../assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
@@ -298,7 +299,7 @@ $pageTitle = 'Edit Laporan';
     <div class="content-header mb-4 d-flex justify-content-between align-items-center">
         <div>
             <h3 class="fw-bold text-pine mb-1">
-                <i class="fas fa-edit me-2 text-pine"></i>Perbarui Laporan <?= generateReportId($report['report_id']) ?>
+                <i class="fas fa-edit me-2 text-pine"></i>Perbarui Laporan <?= generateReportId($report['report_id'], $report['created_at'] ?? null) ?>
             </h3>
             <p class="text-muted mb-0">Perbaiki atau lengkapi data laporan insiden Anda.</p>
         </div>

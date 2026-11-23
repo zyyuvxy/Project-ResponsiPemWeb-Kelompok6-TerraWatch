@@ -39,7 +39,7 @@ try {
         FROM report_updates ru
         LEFT JOIN users u ON ru.changed_by = u.user_id
         WHERE ru.report_id = ?
-        ORDER BY ru.created_at ASC
+        ORDER BY ru.created_at ASC, ru.update_id ASC
     ");
     $stmt->execute([$reportId]);
     $updates = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -77,7 +77,7 @@ try {
         }
     }
 
-    $displayReportId = generateReportId($report['report_id']);
+    $displayReportId = generateReportId($report['report_id'], $report['created_at'] ?? null);
 
 } catch (PDOException $e) {
     redirect('laporan_saya.php');
@@ -106,6 +106,7 @@ function getCategoryBadgeClassDL($categoryName) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?> - TerraWatch</title>
+    <link rel="icon" href="../assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">

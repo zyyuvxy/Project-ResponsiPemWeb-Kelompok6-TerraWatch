@@ -19,6 +19,7 @@ try {
     if (!$user) {
         redirect('../auth/logout.php');
     }
+    $_SESSION['profile_photo'] = $user['profile_photo'];
 
     // Count user reports
     $stmtCount = $pdo->prepare("SELECT COUNT(*) FROM reports WHERE user_id = ?");
@@ -31,6 +32,9 @@ try {
 
 // Handle Profile Update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isPostMaxSizeExceeded()) {
+        $errors[] = 'Ukuran berkas melebihi batas unggah server.';
+    }
     $action = $_POST['action'] ?? '';
 
     // Update Profile Info & Photo
@@ -45,20 +49,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Handle Photo Upload
         $profilePhoto = $user['profile_photo'];
-        if (!empty($_FILES['photo']['name']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-            $res = uploadImage($_FILES['photo'], 'profiles');
-            if ($res !== false) {
-                // Delete old photo if exists
-                if (!empty($user['profile_photo'])) {
-                    $oldPath = UPLOAD_DIR . ltrim(str_replace('uploads/', '', $user['profile_photo']), '/');
-                    if (file_exists($oldPath)) {
-                        @unlink($oldPath);
-                    }
-                }
-                $profilePhoto = $res;
-                $_SESSION['profile_photo'] = $profilePhoto;
+        if (isset($_FILES['photo']) && $_FILES['photo']['error'] !== UPLOAD_ERR_NO_FILE) {
+            $photoErr = $_FILES['photo']['error'];
+            if ($photoErr === UPLOAD_ERR_INI_SIZE || $photoErr === UPLOAD_ERR_FORM_SIZE) {
+                $errors[] = 'Ukuran foto profil terlalu besar. Maksimal 2 MB.';
+            } elseif ($photoErr !== UPLOAD_ERR_OK) {
+                $errors[] = 'Gagal mengunggah foto profil (kode error: ' . $photoErr . ').';
             } else {
-                $errors[] = 'Gagal mengunggah foto profil. Pastikan berkas berupa JPG/PNG yang valid dan ukuran maks. 2MB.';
+                $res = uploadImage($_FILES['photo'], 'profiles');
+                if ($res !== false) {
+                    // Delete old photo if exists
+                    if (!empty($user['profile_photo'])) {
+                        $oldPath = UPLOAD_DIR . ltrim(str_replace('uploads/', '', $user['profile_photo']), '/');
+                        if (file_exists($oldPath)) {
+                            @unlink($oldPath);
+                        }
+                    }
+                    $profilePhoto = $res;
+                    $_SESSION['profile_photo'] = $profilePhoto;
+                } else {
+                    $errors[] = 'Gagal mengunggah foto profil. Pastikan berkas berupa JPG/PNG yang valid dan ukuran maks. 2MB.';
+                }
             }
         }
 
@@ -123,6 +134,7 @@ $pageTitle = 'Profil Pengguna';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?> - TerraWatch</title>
+    <link rel="icon" href="../assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">

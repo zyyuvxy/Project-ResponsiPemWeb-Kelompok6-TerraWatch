@@ -16,11 +16,16 @@ if (isset($pdo) && isset($_SESSION['user_id'])) {
 ?>
 <div class="topbar">
     <div class="topbar-left">
+        <button class="hamburger-btn d-lg-none" id="sidebarToggle" type="button" aria-label="Toggle Navigation">
+            <i class="fas fa-bars"></i>
+        </button>
         <!-- Search Bar -->
-        <div class="topbar-search">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Cari laporan, lokasi hutan, satwa liar, atau koordin...">
-        </div>
+        <form action="<?= $userRole === 'admin' ? 'manajemen_laporan.php' : 'laporan_saya.php' ?>" method="GET" class="topbar-search-form">
+            <div class="topbar-search">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" name="q" class="search-input" placeholder="Cari laporan atau lokasi..." value="<?= htmlspecialchars($_GET['q'] ?? $_GET['search'] ?? '') ?>">
+            </div>
+        </form>
     </div>
 
     <div class="topbar-center">
@@ -76,7 +81,7 @@ if (isset($pdo) && isset($_SESSION['user_id'])) {
         align-items: center;
         justify-content: space-between;
         background: #ffffff;
-        padding: 12px 30px;
+        padding: 12px 24px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         margin-left: 260px;
         position: sticky;
@@ -84,9 +89,34 @@ if (isset($pdo) && isset($_SESSION['user_id'])) {
         z-index: 999;
         gap: 16px;
     }
+    .main-content .topbar {
+        margin-left: 0;
+    }
     .topbar-left {
         flex: 1;
-        max-width: 400px;
+        display: flex;
+        align-items: center;
+    }
+    .topbar-search-form {
+        flex: 1;
+    }
+    .hamburger-btn {
+        background: transparent;
+        border: 1px solid #D6CBB5;
+        border-radius: 8px;
+        padding: 6px 10px;
+        color: #34483B;
+        font-size: 15px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        transition: all 0.2s ease;
+    }
+    .hamburger-btn:hover {
+        background: #F6F6F0;
+        border-color: #789078;
     }
     .topbar-search {
         position: relative;
@@ -199,4 +229,49 @@ if (isset($pdo) && isset($_SESSION['user_id'])) {
         color: white;
         font-size: 14px;
     }
+    @media (max-width: 991.98px) {
+        .topbar {
+            margin-left: 0 !important;
+            padding: 10px 16px;
+        }
+        .main-content {
+            margin-left: 0 !important;
+        }
+        .topbar-center {
+            display: none;
+        }
+        .profile-info {
+            display: none;
+        }
+        .sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 1060;
+        }
+        .sidebar.show {
+            transform: translateX(0);
+            box-shadow: 4px 0 20px rgba(0,0,0,0.35);
+        }
+    }
 </style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.getElementById('sidebarToggle');
+    var sidebar = document.getElementById('sidebar') || document.querySelector('.sidebar');
+    if (toggle && sidebar) {
+        toggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            sidebar.classList.toggle('show');
+        });
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth < 992 && sidebar.classList.contains('show') && !sidebar.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+                sidebar.classList.remove('show');
+            }
+        });
+    }
+});
+</script>

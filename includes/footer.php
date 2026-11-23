@@ -11,20 +11,14 @@ $hasSidebar = isset($_SESSION['user_id']);
             <div class="footer-center-box text-center">
                 <div class="footer-brand-row mb-2">
                     <span class="footer-brand-title">
-                        <span class="logo-leaf me-1">🌿</span>TerraWatch
+                        <img src="../assets/img/terrawatch-logo.png" alt="TerraWatch" style="height: 28px; object-fit: contain;">
                     </span>
                     <span class="footer-separator mx-2 d-none d-sm-inline">|</span>
                     <span class="footer-copyright-text d-block d-sm-inline mt-1 mt-sm-0">
-                        &copy; <?= date('Y') ?> TerraWatch Konservasi Alam Indonesia. Mendukung Aksi Nyata SDGs 15: Life on Land.
+                        &copy; <?= date('Y') ?> TerraWatch - Proyek Responsi Pemrograman Web I. Mendukung SDG 15: Life on Land.
                     </span>
                 </div>
                 <div class="footer-links-row d-flex flex-wrap justify-content-center align-items-center gap-2 gap-md-3">
-                    <a href="#" class="footer-nav-link">Kebijakan Privasi</a>
-                    <span class="footer-dot">•</span>
-                    <a href="#" class="footer-nav-link">Pedoman Verifikasi Spasial</a>
-                    <span class="footer-dot">•</span>
-                    <a href="#" class="footer-nav-link">Transparansi Data Terestrial</a>
-                    <span class="footer-dot">•</span>
                     <a href="https://www.menlhk.go.id" target="_blank" class="footer-nav-link">Referensi: Situs KLHK</a>
                     <span class="footer-dot">•</span>
                     <a href="../user/artikel.php" class="footer-nav-link">Panduan Edukasi</a>

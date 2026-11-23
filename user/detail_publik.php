@@ -38,7 +38,7 @@ try {
         FROM report_updates ru
         LEFT JOIN users a ON ru.changed_by = a.user_id
         WHERE ru.report_id = ?
-        ORDER BY ru.created_at ASC
+        ORDER BY ru.created_at ASC, ru.update_id ASC
     ");
     $stmtHistory->execute([$reportId]);
     $updates = $stmtHistory->fetchAll(PDO::FETCH_ASSOC);
@@ -47,7 +47,7 @@ try {
     redirect('laporan_publik.php');
 }
 
-$pageTitle = 'Detail Laporan Publik ' . generateReportId($report['report_id']);
+$pageTitle = 'Detail Laporan Publik ' . generateReportId($report['report_id'], $report['created_at'] ?? null);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -55,6 +55,7 @@ $pageTitle = 'Detail Laporan Publik ' . generateReportId($report['report_id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?> - TerraWatch</title>
+    <link rel="icon" href="../assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
@@ -115,7 +116,8 @@ $pageTitle = 'Detail Laporan Publik ' . generateReportId($report['report_id']);
     <nav class="navbar navbar-dark bg-pine py-3 shadow-sm" style="background:#34483B;">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="laporan_publik.php">
-                <span class="fs-4 me-2">🌿</span>TerraWatch - Laporan Publik
+                <img src="../assets/img/terrawatch-logo-light.png" alt="TerraWatch" style="height: 36px; object-fit: contain;">
+                <span class="ms-2">Laporan Publik</span>
             </a>
             <a href="../auth/login.php" class="btn btn-outline-light btn-sm">Masuk Portal</a>
         </div>
@@ -134,7 +136,7 @@ $pageTitle = 'Detail Laporan Publik ' . generateReportId($report['report_id']);
             <div class="detail-card">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <span class="badge bg-secondary mb-2"><?= generateReportId($report['report_id']) ?></span>
+                        <span class="badge bg-secondary mb-2"><?= generateReportId($report['report_id'], $report['created_at'] ?? null) ?></span>
                         <h3 class="fw-bold text-pine mb-1"><?= htmlspecialchars($report['title']) ?></h3>
                         <p class="text-muted small mb-0">
                             <i class="fas fa-map-marker-alt text-danger me-1"></i> <?= htmlspecialchars($report['location']) ?>
