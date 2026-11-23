@@ -11,7 +11,7 @@ $hasSidebar = isset($_SESSION['user_id']);
             <div class="footer-center-box text-center">
                 <div class="footer-brand-row mb-2">
                     <span class="footer-brand-title">
-                        <img src="../assets/img/terrawatch-logo.png" alt="TerraWatch" style="height: 28px; object-fit: contain;">
+                        <img src="<?= APP_URL ?>/assets/img/terrawatch-logo.png" alt="TerraWatch" style="height: 28px; object-fit: contain;">
                     </span>
                     <span class="footer-separator mx-2 d-none d-sm-inline">|</span>
                     <span class="footer-copyright-text d-block d-sm-inline mt-1 mt-sm-0">
@@ -64,9 +64,6 @@ $hasSidebar = isset($_SESSION['user_id']);
             color: #34483B;
             font-size: 0.95rem;
             letter-spacing: -0.3px;
-        }
-        .footer-brand-title .logo-leaf {
-            font-size: 1.05rem;
         }
         .footer-separator {
             color: #D6CBB5;

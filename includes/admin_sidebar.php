@@ -9,7 +9,7 @@ if (isset($pdo) && isset($_SESSION['user_id'])) {
     <!-- Logo Section -->
     <div class="sidebar-header">
         <div class="sidebar-logo">
-            <img src="../assets/img/terrawatch-logo-light.png" alt="TerraWatch" style="height: 36px; max-width: 180px; object-fit: contain;">
+            <img src="<?= APP_URL ?>/assets/img/terrawatch-logo-light.png" alt="TerraWatch" class="logo-img">
         </div>
         <div class="sidebar-sdg-badge">
             <i class="fas fa-globe-americas"></i> SDG 15: Life on Land
@@ -103,14 +103,6 @@ if (isset($pdo) && isset($_SESSION['user_id'])) {
         align-items: center;
         gap: 8px;
         margin-bottom: 10px;
-    }
-    .logo-leaf {
-        font-size: 24px;
-    }
-    .logo-name {
-        font-size: 20px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
     }
     .sidebar-sdg-badge {
         background: rgba(255,255,255,0.12);

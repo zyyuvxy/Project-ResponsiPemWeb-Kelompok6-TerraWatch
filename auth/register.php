@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar - TerraWatch</title>
-    <link rel="icon" href="../assets/img/favicon-32.png">
+    <link rel="icon" href="<?= APP_URL ?>/assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -118,16 +118,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             justify-content: center;
             gap: 10px;
             margin-bottom: 6px;
-        }
-        .logo-brand .logo-leaf {
-            font-size: 34px;
-            line-height: 1;
-        }
-        .logo-brand .logo-name {
-            font-size: 28px;
-            font-weight: 700;
-            color: #34483B;
-            letter-spacing: -0.5px;
         }
         .tagline {
             font-size: 12px;
@@ -254,7 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="register-card">
         <div class="logo-section">
             <div class="logo-brand">
-                <img src="../assets/img/terrawatch-logo.png" alt="TerraWatch" style="height: 60px; object-fit: contain;">
+                <img src="<?= APP_URL ?>/assets/img/terrawatch-logo.png" alt="TerraWatch" style="height: 60px; object-fit: contain;">
             </div>
             <div class="tagline">Observe, Report, Protect</div>
             <div class="sdg-badge mt-2">

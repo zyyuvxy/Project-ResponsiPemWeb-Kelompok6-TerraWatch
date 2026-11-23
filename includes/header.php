@@ -9,7 +9,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?? 'TerraWatch' ?> - TerraWatch</title>
-    <link rel="icon" href="<?= defined('APP_URL') ? APP_URL : '..' ?>/assets/img/favicon-32.png">
+    <link rel="icon" href="<?= APP_URL ?>/assets/img/favicon-32.png">
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">

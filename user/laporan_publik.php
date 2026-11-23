@@ -79,7 +79,7 @@ $pageTitle = 'Laporan Publik';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?> - TerraWatch</title>
-    <link rel="icon" href="../assets/img/favicon-32.png">
+    <link rel="icon" href="<?= APP_URL ?>/assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
@@ -141,7 +141,7 @@ $pageTitle = 'Laporan Publik';
     <nav class="navbar navbar-expand-lg navbar-dark bg-pine py-3 shadow-sm" style="background:#34483B;">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.php">
-                <img src="../assets/img/terrawatch-logo-light.png" alt="TerraWatch" style="height: 36px; object-fit: contain;">
+                <img src="<?= APP_URL ?>/assets/img/terrawatch-logo-light.png" alt="TerraWatch" style="height: 36px; object-fit: contain;">
             </a>
             <div class="ms-auto">
                 <a href="../auth/login.php" class="btn btn-outline-light me-2">Masuk</a>

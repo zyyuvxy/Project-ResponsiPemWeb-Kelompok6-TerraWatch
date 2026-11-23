@@ -43,6 +43,12 @@
 }
 
 /* ---- Reset & Base ---- */
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
 * {
     margin: 0;
     padding: 0;

@@ -96,7 +96,7 @@ $pageTitle = 'Dashboard';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?> - TerraWatch</title>
-    <link rel="icon" href="../assets/img/favicon-32.png">
+    <link rel="icon" href="<?= APP_URL ?>/assets/img/favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
@@ -375,7 +375,7 @@ $pageTitle = 'Dashboard';
         <!-- G. Conservation Tips -->
         <div class="tips-card">
             <div class="d-flex align-items-center gap-2 mb-2">
-                <img src="../assets/img/terrawatch-logo.png" alt="TerraWatch" style="height: 28px; object-fit: contain;">
+                <img src="<?= APP_URL ?>/assets/img/terrawatch-logo.png" alt="TerraWatch" style="height: 28px; object-fit: contain;">
             </div>
             <div class="tc-label">TIPS KONSERVASI HARI INI</div>
             <h5>Identifikasi Bukti Perambahan Liar Berbasis Geotag</h5>
