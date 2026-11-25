@@ -210,7 +210,7 @@ function getCategoryBadgeClassDL($categoryName) {
                         $imgPath = getImageUrl($img['image_path']);
                     ?>
                     <div class="gallery-item" onclick="openLightbox('<?= htmlspecialchars($imgPath) ?>')">
-                        <img src="<?= htmlspecialchars($imgPath) ?>" alt="Foto Laporan" loading="lazy" onerror="this.src='https://placehold.co/600x400/2D5016/ffffff?text=Bukti+Laporan'">
+                        <img src="<?= htmlspecialchars($imgPath) ?>" alt="Foto Laporan" loading="lazy" onerror="this.onerror=null;this.src='<?= APP_URL ?>/assets/img/default-forest.jpg'">
                         <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                     </div>
                     <?php endforeach; ?>

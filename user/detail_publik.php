@@ -177,7 +177,7 @@ $pageTitle = 'Detail Laporan Publik ' . generateReportId($report['report_id'], $
                         ?>
                             <div class="col-4 col-md-3">
                                 <a href="<?= htmlspecialchars($imgSrc) ?>" target="_blank">
-                                    <img src="<?= htmlspecialchars($imgSrc) ?>" class="gallery-thumb" alt="Foto Bukti" onerror="this.src='https://placehold.co/400x300/2D5016/ffffff?text=Bukti'">
+                                    <img src="<?= htmlspecialchars($imgSrc) ?>" class="gallery-thumb" alt="Foto Bukti" onerror="this.onerror=null;this.src='<?= APP_URL ?>/assets/img/default-forest.jpg'">
                                 </a>
                             </div>
                         <?php endforeach; ?>

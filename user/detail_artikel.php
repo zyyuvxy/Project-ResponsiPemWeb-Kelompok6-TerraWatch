@@ -124,7 +124,7 @@ $pageTitle = $article['title'];
                     <img src="<?= htmlspecialchars(getImageUrl($article['image'])) ?>" 
                          class="article-main-img" 
                          alt="<?= htmlspecialchars($article['title']) ?>"
-                         onerror="this.src='https://placehold.co/800x450/34483B/ffffff?text=Konservasi+Alam'">
+                         onerror="this.onerror=null;this.src='<?= APP_URL ?>/assets/img/default-forest.jpg'">
                 <?php endif; ?>
 
                 <div class="article-body-text">

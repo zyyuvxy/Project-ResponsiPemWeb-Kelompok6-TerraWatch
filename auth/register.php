@@ -62,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             min-height: 100vh;
             display: flex;
@@ -87,6 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             position: relative;
             padding: 20px 0;
         }
+
         body::before {
             content: '';
             position: absolute;
@@ -98,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-size: cover;
             pointer-events: none;
         }
+
         .register-card {
             background: #ffffff;
             border-radius: 20px;
@@ -108,10 +112,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             position: relative;
             z-index: 1;
         }
+
         .logo-section {
             text-align: center;
             margin-bottom: 25px;
         }
+
         .logo-brand {
             display: inline-flex;
             align-items: center;
@@ -119,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             gap: 10px;
             margin-bottom: 6px;
         }
+
         .tagline {
             font-size: 12px;
             color: #789078;
@@ -126,11 +133,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             text-transform: uppercase;
             margin-top: 4px;
             font-weight: 600;
-        }
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-top: 4px;
         }
+
         .sdg-badge {
             display: inline-block;
             background: linear-gradient(135deg, #789078, #34483B);
@@ -142,6 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-weight: 600;
             letter-spacing: 0.5px;
         }
+
         .section-title {
             text-align: center;
             font-size: 18px;
@@ -149,9 +157,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: #344054;
             margin-bottom: 20px;
         }
+
         .form-group {
             margin-bottom: 18px;
         }
+
         .form-group label {
             font-size: 13px;
             font-weight: 600;
@@ -159,10 +169,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin-bottom: 6px;
             display: block;
         }
+
         .input-group-custom {
             position: relative;
         }
-        .input-group-custom > i.field-icon {
+
+        .input-group-custom>i.field-icon {
             position: absolute;
             left: 14px;
             top: 50%;
@@ -171,6 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-size: 14px;
             z-index: 2;
         }
+
         .input-group-custom input {
             width: 100%;
             padding: 12px 14px 12px 42px;
@@ -180,23 +193,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             transition: all 0.3s ease;
             background: #F6F6F0;
         }
+
         .input-group-custom input[type="password"] {
             padding-right: 44px;
         }
+
         .input-group-custom input:focus {
             outline: none;
             border-color: #789078;
             box-shadow: 0 0 0 3px rgba(120, 144, 120, 0.15);
             background: #fff;
         }
+
         .input-group-custom input.is-invalid {
             border-color: #C17B58;
         }
+
         .invalid-feedback {
             font-size: 12px;
             color: #C17B58;
             margin-top: 4px;
         }
+
         .btn-register {
             width: 100%;
             padding: 12px;
@@ -210,25 +228,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
         }
+
         .btn-register:hover {
             background: linear-gradient(135deg, #34483B, #789078);
             box-shadow: 0 4px 15px rgba(52, 72, 59, 0.4);
             transform: translateY(-1px);
         }
+
         .login-link {
             text-align: center;
             margin-top: 20px;
             font-size: 13px;
             color: #667085;
         }
+
         .login-link a {
             color: #34483B;
             font-weight: 600;
             text-decoration: none;
         }
+
         .login-link a:hover {
             text-decoration: underline;
         }
+
         .password-toggle {
             position: absolute;
             right: 14px;
@@ -240,6 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 </head>
+
 <body>
     <div class="register-card">
         <div class="logo-section">
@@ -260,7 +284,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="input-group-custom">
                     <i class="fas fa-user field-icon"></i>
                     <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required
-                           value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
+                        value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
                 </div>
             </div>
 
@@ -269,7 +293,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="input-group-custom">
                     <i class="fas fa-envelope field-icon"></i>
                     <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required
-                           value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+                        value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
                 </div>
             </div>
 
@@ -358,27 +382,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         });
 
         <?php if (!empty($error)): ?>
-        Swal.fire({
-            icon: 'error',
-            title: 'Gagal Mendaftar',
-            text: '<?= addslashes($error) ?>',
-            confirmButtonColor: '#34483B'
-        });
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal Mendaftar',
+                text: '<?= addslashes($error) ?>',
+                confirmButtonColor: '#34483B'
+            });
         <?php endif; ?>
 
         <?php if (!empty($success)): ?>
-        Swal.fire({
-            icon: 'success',
-            title: 'Registrasi Berhasil!',
-            text: '<?= addslashes($success) ?>',
-            confirmButtonColor: '#34483B',
-            confirmButtonText: 'Masuk Sekarang',
-            timer: 2500,
-            showConfirmButton: true
-        }).then(() => {
-            window.location.href = 'login.php';
-        });
+            Swal.fire({
+                icon: 'success',
+                title: 'Registrasi Berhasil!',
+                text: '<?= addslashes($success) ?>',
+                confirmButtonColor: '#34483B',
+                confirmButtonText: 'Masuk Sekarang',
+                timer: 2500,
+                showConfirmButton: true
+            }).then(() => {
+                window.location.href = 'login.php';
+            });
         <?php endif; ?>
     </script>
 </body>
+
 </html>

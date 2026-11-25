@@ -188,7 +188,7 @@ include __DIR__ . '/../includes/admin_sidebar.php';
                             ?>
                             <div class="col-md-4 col-6">
                                 <a href="<?= htmlspecialchars($imgSrc) ?>" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this)">
-                                    <img src="<?= htmlspecialchars($imgSrc) ?>" class="img-fluid rounded shadow-sm" style="height:200px;width:100%;object-fit:cover;cursor:zoom-in;" alt="Foto Laporan" onerror="this.src='https://placehold.co/600x400/2D5016/ffffff?text=Bukti+Laporan'">
+                                    <img src="<?= htmlspecialchars($imgSrc) ?>" class="img-fluid rounded shadow-sm" style="height:200px;width:100%;object-fit:cover;cursor:zoom-in;" alt="Foto Laporan" onerror="this.onerror=null;this.src='<?= APP_URL ?>/assets/img/default-forest.jpg'">
                                 </a>
                             </div>
                             <?php endforeach; ?>

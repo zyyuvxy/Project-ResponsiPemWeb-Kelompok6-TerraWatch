@@ -60,8 +60,8 @@ $pageTitle = 'Artikel Edukasi Lingkungan';
             border-color: #B5C2AA;
         }
         .article-thumb {
-            height: 200px;
             width: 100%;
+            aspect-ratio: 3/2;
             object-fit: cover;
             background: #F6F6F0;
         }
@@ -128,25 +128,25 @@ $pageTitle = 'Artikel Edukasi Lingkungan';
     <?php else: ?>
         <div class="row g-4 mb-4">
             <?php foreach ($articles as $art): 
-                $imgUrl = !empty($art['image']) ? getImageUrl($art['image']) : 'https://placehold.co/600x400/34483B/ffffff?text=Konservasi+TerraWatch';
+                $imgUrl = getImageUrl($art['image'] ?? '');
             ?>
             <div class="col-md-6 col-lg-4">
                 <div class="article-card">
-                    <img src="<?= $imgUrl ?>" class="article-thumb" alt="<?= htmlspecialchars($art['title']) ?>" onerror="this.src='https://placehold.co/600x400/34483B/ffffff?text=TerraWatch'">
+                    <img src="<?= $imgUrl ?>" class="article-thumb" alt="<?= htmlspecialchars($art['title']) ?>" onerror="this.onerror=null;this.src='<?= APP_URL ?>/assets/img/default-forest.jpg'">
                     <div class="article-body">
                         <div class="d-flex justify-content-between align-items-center mb-2 small text-muted">
                             <span><i class="fas fa-user-shield me-1"></i><?= htmlspecialchars($art['author_name'] ?? 'Admin') ?></span>
                             <span><i class="fas fa-calendar-alt me-1"></i><?= formatDate($art['created_at']) ?></span>
                         </div>
-                        <h5 class="fw-bold mb-2 text-dark" style="line-height:1.4; min-height:50px;">
+                        <h5 class="fw-bold mb-2 text-dark line-clamp-2" style="line-height:1.4; min-height:2.8rem;">
                             <a href="detail_artikel.php?id=<?= $art['article_id'] ?>" class="text-decoration-none text-dark hover-green">
-                                <?= htmlspecialchars(mb_strimwidth($art['title'], 0, 65, '...')) ?>
+                                <?= htmlspecialchars($art['title']) ?>
                             </a>
                         </h5>
-                        <p class="text-muted small mb-4 flex-grow-1" style="line-height:1.5;">
-                            <?= htmlspecialchars(mb_strimwidth(strip_tags($art['content']), 0, 120, '...')) ?>
+                        <p class="text-muted small mb-4 line-clamp-2" style="line-height:1.5;">
+                            <?= htmlspecialchars(strip_tags($art['content'])) ?>
                         </p>
-                        <a href="detail_artikel.php?id=<?= $art['article_id'] ?>" class="btn btn-outline-success w-100 fw-bold" style="color:#34483B;border-color:#34483B;">
+                        <a href="detail_artikel.php?id=<?= $art['article_id'] ?>" class="btn btn-outline-success w-100 fw-bold mt-auto" style="color:#34483B;border-color:#34483B;">
                             Baca Artikel Lengkap <i class="fas fa-arrow-right ms-1"></i>
                         </a>
                     </div>

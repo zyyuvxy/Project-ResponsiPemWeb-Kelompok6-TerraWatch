@@ -201,16 +201,16 @@ INSERT INTO `reports` (`report_id`, `user_id`, `category_id`, `title`, `incident
  'Diduga terjadi pemotongan tebing tanpa izin di perbatasan kebun.',
  'Rejected', 'Lokasi setelah diverifikasi berada di tanah milik pribadi dengan izin perataan tanah yang sah dari instansi setempat.', '2024-06-16 09:00:00', '2024-06-16 15:30:00');
 
--- Report Images (Semua diawali folder reports/...)
+-- Report Images (Semua diawali folder assets/img/seed/...)
 INSERT INTO `report_images` (`image_id`, `report_id`, `image_path`, `uploaded_at`) VALUES
-(1, 1, 'reports/report_1_img1.jpg', '2024-03-11 09:15:00'),
-(2, 1, 'reports/report_1_img2.jpg', '2024-03-11 09:15:00'),
-(3, 2, 'reports/report_2_img1.jpg', '2024-04-06 10:20:00'),
-(4, 3, 'reports/report_3_img1.jpg', '2024-05-21 07:45:00'),
-(5, 3, 'reports/report_3_img2.jpg', '2024-05-21 07:45:00'),
-(6, 4, 'reports/report_4_img1.jpg', '2024-06-02 08:30:00'),
-(7, 5, 'reports/report_5_img1.jpg', '2024-06-11 11:00:00'),
-(8, 6, 'reports/report_6_img1.jpg', '2024-06-16 09:00:00');
+(1, 1, 'assets/img/seed/report_1_img1.jpg', '2024-03-11 09:15:00'),
+(2, 1, 'assets/img/seed/report_1_img2.jpg', '2024-03-11 09:15:00'),
+(3, 2, 'assets/img/seed/report_2_img1.jpg', '2024-04-06 10:20:00'),
+(4, 3, 'assets/img/seed/report_3_img1.jpg', '2024-05-21 07:45:00'),
+(5, 3, 'assets/img/seed/report_3_img2.jpg', '2024-05-21 07:45:00'),
+(6, 4, 'assets/img/seed/report_4_img1.jpg', '2024-06-02 08:30:00'),
+(7, 5, 'assets/img/seed/report_5_img1.jpg', '2024-06-11 11:00:00'),
+(8, 6, 'assets/img/seed/report_6_img1.jpg', '2024-06-16 09:00:00');
 
 -- Report Updates (Status History Lengkap Berurutan)
 INSERT INTO `report_updates` (`update_id`, `report_id`, `changed_by`, `old_status`, `new_status`, `note`, `created_at`) VALUES
@@ -244,11 +244,11 @@ INSERT INTO `report_updates` (`update_id`, `report_id`, `changed_by`, `old_statu
 INSERT INTO `articles` (`article_id`, `admin_id`, `title`, `content`, `image`, `status`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Pentingnya Menjaga Kelestarian Hutan untuk Generasi Mendatang',
  'Hutan merupakan paru-paru dunia yang memiliki peran vital dalam menjaga keseimbangan ekosistem terestrial. Kawasan hutan tropis menyimpan keanekaragaman hayati terkaya di bumi dan menjadi penyangga utama siklus air tanah serta pencegah bencana longsor.\n\nDalam rangka mendukung tercapainya Sustainable Development Goals (SDG 15 - Life on Land), setiap elemen masyarakat dapat turut serta menjaga kelestarian ekosistem darat dengan:\n1. Tidak melakukan penebangan liar pohon di kawasan hutan lindung.\n2. Mencegah praktik pembukaan lahan dengan cara membakar.\n3. Melaporkan setiap indikasi perusakan lingkungan melalui platform partisipatif TerraWatch.',
- 'articles/article_1.jpg', 'Published', '2024-02-15 10:00:00', '2024-02-15 10:00:00'),
+ 'assets/img/seed/article_1.jpg', 'Published', '2024-02-15 10:00:00', '2024-02-15 10:00:00'),
 
 (2, 1, 'Mengenal Erosi dan Upaya Konservasi Lahan Terestrial',
  'Degradasi lahan akibat erosi lereng dan hilangnya tutupan kanopi pohon mempercepat kehilangan lapisan tanah humus yang subur. Upaya terasering, penanaman vegetasi penahan akar, dan perlindungan DAS menjadi kunci pemulihan kualitas lahan darat.',
- NULL, 'Draft', '2024-03-20 14:30:00', '2024-03-20 14:30:00');
+ 'assets/img/seed/article_2.jpg', 'Draft', '2024-03-20 14:30:00', '2024-03-20 14:30:00');
 
 -- Notifications
 INSERT INTO `notifications` (`notification_id`, `user_id`, `report_id`, `message`, `is_read`, `created_at`) VALUES

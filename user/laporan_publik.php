@@ -101,8 +101,8 @@ $pageTitle = 'Laporan Publik';
             border-color: #B5C2AA;
         }
         .public-card-img {
-            height: 180px;
             width: 100%;
+            aspect-ratio: 3/2;
             object-fit: cover;
             background: #F6F6F0;
         }
@@ -209,32 +209,32 @@ $pageTitle = 'Laporan Publik';
     <?php else: ?>
         <div class="row g-4 mb-4">
             <?php foreach ($reports as $r): 
-                $thumb = !empty($r['thumbnail']) ? getImageUrl($r['thumbnail']) : '../assets/img/default-forest.jpg';
+                $thumb = getImageUrl($r['thumbnail'] ?? '');
                 $statusLower = strtolower(str_replace(' ', '-', $r['status']));
             ?>
             <div class="col-md-6 col-lg-4">
-                <div class="public-card">
-                    <img src="<?= $thumb ?>" alt="<?= htmlspecialchars($r['title']) ?>" class="public-card-img" onerror="this.src='https://placehold.co/600x400/2D5016/ffffff?text=TerraWatch'">
-                    <div class="public-card-body">
+                <div class="public-card h-100">
+                    <img src="<?= $thumb ?>" alt="<?= htmlspecialchars($r['title']) ?>" class="public-card-img" onerror="this.onerror=null;this.src='<?= APP_URL ?>/assets/img/default-forest.jpg'">
+                    <div class="public-card-body d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="badge bg-light text-dark border"><?= htmlspecialchars($r['category_name'] ?? 'Umum') ?></span>
                             <span class="status-badge <?= $statusLower ?>">
                                 <span class="dot"></span><?= htmlspecialchars($r['status']) ?>
                             </span>
                         </div>
-                        <h6 class="fw-bold mb-2 text-dark" style="min-height:44px; line-height:1.4;">
-                            <?= htmlspecialchars(mb_strimwidth($r['title'], 0, 65, '...')) ?>
+                        <h6 class="fw-bold mb-2 text-dark line-clamp-2" style="min-height:2.6rem; line-height:1.4;">
+                            <?= htmlspecialchars($r['title']) ?>
                         </h6>
-                        <p class="text-muted small mb-2">
+                        <p class="text-muted small mb-2 line-clamp-1">
                             <i class="fas fa-map-marker-alt text-danger me-1"></i>
-                            <?= htmlspecialchars(mb_strimwidth($r['location'], 0, 45, '...')) ?>
+                            <?= htmlspecialchars($r['location']) ?>
                         </p>
-                        <p class="text-muted small mb-3 flex-grow-1" style="line-height:1.4;">
-                            <?= htmlspecialchars(mb_strimwidth($r['description'], 0, 95, '...')) ?>
+                        <p class="text-muted small mb-3 line-clamp-2" style="line-height:1.4;">
+                            <?= htmlspecialchars(strip_tags($r['description'])) ?>
                         </p>
                         <div class="border-top pt-2 d-flex justify-content-between align-items-center mt-auto">
                             <span class="small text-muted"><i class="fas fa-calendar-alt me-1"></i><?= formatDate($r['incident_date']) ?></span>
-                            <a href="detail_publik.php?id=<?= $r['report_id'] ?>" class="btn btn-sm btn-outline-success" style="color:#34483B;border-color:#34483B;">
+                            <a href="detail_publik.php?id=<?= $r['report_id'] ?>" class="btn btn-sm btn-outline-success mt-auto" style="color:#34483B;border-color:#34483B;">
                                 Detail <i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>

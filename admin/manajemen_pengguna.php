@@ -162,7 +162,7 @@ include __DIR__ . '/../includes/admin_sidebar.php';
                                 <td><?= $u['user_id'] ?></td>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="<?= $u['profile_photo'] ? htmlspecialchars(getImageUrl($u['profile_photo'])) : '../assets/img/default-avatar.png' ?>" class="rounded-circle me-2" width="35" height="35" style="object-fit:cover;" alt="">
+                                        <img src="<?= htmlspecialchars(getImageUrl($u['profile_photo'])) ?>" class="rounded-circle me-2" width="35" height="35" style="object-fit:cover;" alt="" onerror="this.onerror=null;this.src='<?= APP_URL ?>/assets/img/default-forest.jpg'">
                                         <div>
                                             <strong><?= e($u['name']) ?></strong>
                                             <?php if ($u['phone']): ?>
@@ -220,7 +220,7 @@ include __DIR__ . '/../includes/admin_sidebar.php';
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                                         </div>
                                         <div class="modal-body text-center">
-                                            <img src="<?= $u['profile_photo'] ? htmlspecialchars(getImageUrl($u['profile_photo'])) : '../assets/img/default-avatar.png' ?>" class="rounded-circle mb-3" width="100" height="100" style="object-fit:cover;" alt="">
+                                            <img src="<?= htmlspecialchars(getImageUrl($u['profile_photo'])) ?>" class="rounded-circle mb-3" width="100" height="100" style="object-fit:cover;" alt="" onerror="this.onerror=null;this.src='<?= APP_URL ?>/assets/img/default-forest.jpg'">
                                             <h5><?= e($u['name']) ?></h5>
                                             <p class="text-muted"><?= e($u['email']) ?></p>
                                             <table class="table table-borderless text-start">

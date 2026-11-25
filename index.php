@@ -280,12 +280,12 @@ if (isset($pdo) && $pdo !== null) {
                 ?>
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                        <img src="<?= $thumb ?>" class="card-img-top" style="height:190px;object-fit:cover;" alt="Bukti" onerror="this.src='https://placehold.co/600x400/2D5016/ffffff?text=TerraWatch'">
-                        <div class="card-body p-3 d-flex flex-direction-column">
-                            <span class="badge bg-light text-pine border mb-2" style="color:#34483B;"><?= htmlspecialchars($fr['category_name'] ?? 'Umum') ?></span>
-                            <h6 class="fw-bold text-dark mb-2"><?= htmlspecialchars(mb_strimwidth($fr['title'], 0, 55, '...')) ?></h6>
-                            <p class="text-muted small mb-3 flex-grow-1"><?= htmlspecialchars(mb_strimwidth($fr['location'], 0, 45, '...')) ?></p>
-                            <a href="user/detail_publik.php?id=<?= $fr['report_id'] ?>" class="btn btn-sm btn-outline-success w-100 fw-bold" style="color:#34483B;border-color:#34483B;">Lihat Tindak Lanjut</a>
+                        <img src="<?= $thumb ?>" class="card-img-top card-img-3-2" style="width:100%;aspect-ratio:3/2;object-fit:cover;" alt="Bukti" onerror="this.onerror=null;this.src='<?= APP_URL ?>/assets/img/default-forest.jpg'">
+                        <div class="card-body p-3 d-flex flex-column">
+                            <span class="badge bg-light text-pine border mb-2 align-self-start" style="color:#34483B;"><?= htmlspecialchars($fr['category_name'] ?? 'Umum') ?></span>
+                            <h6 class="fw-bold text-dark mb-2 line-clamp-2"><?= htmlspecialchars($fr['title']) ?></h6>
+                            <p class="text-muted small mb-3 line-clamp-1"><i class="fas fa-map-marker-alt text-danger me-1"></i><?= htmlspecialchars($fr['location']) ?></p>
+                            <a href="user/detail_publik.php?id=<?= $fr['report_id'] ?>" class="btn btn-sm btn-outline-success w-100 fw-bold mt-auto" style="color:#34483B;border-color:#34483B;">Lihat Tindak Lanjut</a>
                         </div>
                     </div>
                 </div>
@@ -313,12 +313,12 @@ if (isset($pdo) && $pdo !== null) {
                 ?>
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                        <img src="<?= $artThumb ?>" class="card-img-top" style="height:180px;object-fit:cover;" alt="Artikel" onerror="this.src='https://placehold.co/600x400/2D5016/ffffff?text=Edukasi'">
-                        <div class="card-body p-3">
+                        <img src="<?= $artThumb ?>" class="card-img-top card-img-3-2" style="width:100%;aspect-ratio:3/2;object-fit:cover;" alt="Artikel" onerror="this.onerror=null;this.src='<?= APP_URL ?>/assets/img/default-forest.jpg'">
+                        <div class="card-body p-3 d-flex flex-column">
                             <small class="text-muted d-block mb-1"><i class="far fa-calendar-alt me-1"></i><?= formatDate($ra['created_at']) ?></small>
-                            <h6 class="fw-bold text-dark mb-2"><?= htmlspecialchars(mb_strimwidth($ra['title'], 0, 60, '...')) ?></h6>
-                            <p class="text-muted small mb-3"><?= htmlspecialchars(mb_strimwidth(strip_tags($ra['content']), 0, 90, '...')) ?></p>
-                            <a href="user/detail_artikel.php?id=<?= $ra['article_id'] ?>" class="text-pine fw-bold small text-decoration-none" style="color:#34483B;">
+                            <h6 class="fw-bold text-dark mb-2 line-clamp-2"><?= htmlspecialchars($ra['title']) ?></h6>
+                            <p class="text-muted small mb-3 line-clamp-2"><?= htmlspecialchars(strip_tags($ra['content'])) ?></p>
+                            <a href="user/detail_artikel.php?id=<?= $ra['article_id'] ?>" class="text-pine fw-bold small text-decoration-none mt-auto" style="color:#34483B;">
                                 Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>

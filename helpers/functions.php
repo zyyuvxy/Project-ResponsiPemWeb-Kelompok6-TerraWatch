@@ -156,17 +156,18 @@ function generateReportId($id = null, ?string $createdAt = null): string
  */
 function getImageUrl(?string $path): string
 {
+    $appUrl = defined('APP_URL') ? rtrim(APP_URL, '/') : '';
     if (empty($path)) {
-        return 'https://placehold.co/600x400/34483B/ffffff?text=TerraWatch';
+        return $appUrl . '/assets/img/default-forest.jpg';
     }
     if (strpos($path, 'http://') === 0 || strpos($path, 'https://') === 0) {
         return $path;
     }
     $cleanPath = ltrim($path, '/');
-    if (strpos($cleanPath, 'uploads/') === 0) {
-        return '../' . $cleanPath;
+    if (strpos($cleanPath, 'uploads/') === 0 || strpos($cleanPath, 'assets/') === 0) {
+        return $appUrl . '/' . $cleanPath;
     }
-    return '../uploads/' . $cleanPath;
+    return $appUrl . '/uploads/' . $cleanPath;
 }
 
 /**
