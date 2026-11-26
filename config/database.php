@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Database Configuration
  * TerraWatch Environmental Reporting Platform
  */
 
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'sql109.infinityfree.com');
 define('DB_PORT', '3306');
-define('DB_NAME', 'terrawatch_db');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_NAME', 'if0_43534478_terrawatch_db');
+define('DB_USER', 'if0_43534478');
+define('DB_PASS', 'Zuvika2518');
 define('DB_CHARSET', 'utf8mb4');
 
 /**
